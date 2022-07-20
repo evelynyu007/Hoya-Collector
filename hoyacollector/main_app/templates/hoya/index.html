@@ -4,10 +4,12 @@
 
 {% for ho in hoya %}
 <div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ ho.name }}</span>
-    <p>Color: {{ ho.color }}</p>
-    <p>Scent: {{ ho.scent }}</p>
-  </div>
+  <a href="{% url 'detail' ho.id %}">
+    <div class="card-content">
+      <span class="card-title">{{ ho.name }}</span>
+      <p>Color: {{ ho.color }}</p>
+      <p>Scent: {{ ho.scent }}</p>
+    </div>
+  </a>
 </div>
 {% endfor %} {% endblock %}

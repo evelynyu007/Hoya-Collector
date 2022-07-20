@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Hoya Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ hoya.name }}</span>
+    <p>Color: {{ hoya.color }}</p>
+    <p>Scent: {{hoya.scent }}</p>
+    <img src="{{hoya.img}}" alt="{{hoya.name}}" />
+    <div class="card-action">
+      <a href="{% url 'hoya_update' hoya.id %}">Edit</a>
+      <a href="{% url 'hoya_delete' hoya.id %}">Delete</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

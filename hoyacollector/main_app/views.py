@@ -3,20 +3,10 @@ from django.shortcuts import render
 # Create your views here.
 # Add the following import
 from django.http import HttpResponse
+from .models import Hoya
+# Add UdpateView & DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-# Add the Cat class & list and view function below the imports
-class Hoya:  # Note that parens are optional if not inheriting from another class
-  def __init__(self, name, color, scent):
-    self.name = name
-    self.color = color
-    self.scent = scent
-
-
-hoya = [
-  Hoya('Lolo', 'white', 'sweet'),
-  Hoya('Sachi', 'black', 'chocoloate'),
-  Hoya('Raven', 'pink', 'sweet')
-]
 
 
 # Define the home view
@@ -28,4 +18,21 @@ def about(request):
 
 # Add new view
 def hoya_index(request):
+  hoya = Hoya.objects.all()
   return render(request, 'hoya/index.html', { 'hoya': hoya })
+
+def hoya_detail(request, hoya_id):
+  hoya = Hoya.objects.get(id = hoya_id)
+  return render(request, 'hoya/detail.html', { 'hoya': hoya })
+
+class HoyaCreate(CreateView):
+  model = Hoya
+  fields = '__all__'
+
+class HoyaUpdate(UpdateView):
+  model = Hoya
+  fields = '__all__'
+
+class HoyaDelete(DeleteView):
+  model = Hoya
+  success_url='/hoya/'
