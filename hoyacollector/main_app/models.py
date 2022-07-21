@@ -22,7 +22,7 @@ class Hoya(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'hoya_id': self.id})
 
-class cultivation(models.Model):
+class Cultivation(models.Model):
     date = models.DateField("Caring Date")
     care = models.CharField(max_length=1,
     choices=CARES, 
@@ -33,3 +33,7 @@ class cultivation(models.Model):
     def __str__(self):
     # Nice method for obtaining the friendly value of a Field.choice
       return f"{self.get_care_display()} on {self.date}"
+    
+     # change the default sort
+    class Meta:
+      ordering = ['-date']

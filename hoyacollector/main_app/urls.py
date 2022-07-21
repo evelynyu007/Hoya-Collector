@@ -9,5 +9,6 @@ urlpatterns = [
   path('hoya/<int:hoya_id>/', views.hoya_detail, name='detail'),
   path('hoya/create/', views.HoyaCreate.as_view(), name ='hoya_create'),
   path('hoya/<int:pk>/update/', views.HoyaUpdate.as_view(), name='hoya_update'),
-path('hoya/<int:pk>/delete/', views.HoyaDelete.as_view(), name='hoya_delete'),
+  path('hoya/<int:pk>/delete/', views.HoyaDelete.as_view(), name='hoya_delete'),
+  path('hoya/<int:hoya_id>/add_cultivation/', views.add_cultivation, name='add_cultivation'),
 ]
